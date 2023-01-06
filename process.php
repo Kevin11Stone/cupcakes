@@ -10,24 +10,26 @@
 <body>
 
 <?php
-if(isset($_POST['name'])){
-    echo "<h1>Thank you, " . $_POST['name'] .  " for your order!</h1>";
-}
 
 
 
+if(isset($_POST['flavor']) && !empty($_POST['name'])){
     $flavorArray = $_POST['flavor'];
     $sum = 0;
 
-
-    echo "<h3>Order Summary: </h3><br>";
+    echo "<h1>Thank you, " . $_POST['name'] .  ", for your order!</h1>";    echo "<h3>Order Summary: </h3>";
     foreach ( $flavorArray as $flavor ){
         $sum += 3.50;
         echo " - $flavor";
         echo "<br>";
     }
-
+    echo "<br>";
     echo "Order Total: $" . $sum;
+}
+else {
+    echo "<h1>Please enter your name and choose a flavor</h1>";
+}
+
 
 ?>
 
